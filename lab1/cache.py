@@ -14,7 +14,6 @@ class LRUCache:
             self.__dict.move_to_end(key)
             return self.__dict[key]
         else:
-            assert key in self.__dict[key], 'Value not found'
             return ""
 
     def set(self, key: str, value: str) -> None:
@@ -24,6 +23,5 @@ class LRUCache:
             self.__dict.popitem(last=False)
 
     def rem(self, key: str) -> None:
-        assert key in self.__dict[key], 'Key not found'
         if key in self.__dict:
             del self.__dict[key]
