@@ -24,7 +24,6 @@ from mainapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mainapp/', include('mainapp.urls')),
-    path('', RedirectView.as_view(url='mainapp/', permanent=True)),
     path('catalogue/', views.catalogue),
     path('categories/', views.categories),
     path('profile/', views.profile),

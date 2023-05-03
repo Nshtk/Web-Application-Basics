@@ -3,19 +3,19 @@ from django.db import models
 from django.urls import reverse
 
 
-class User(models.Model):
-    # Fields
-    name = models.CharField(max_length=60, help_text='Enter field documentation')
-    phone = models.CharField(max_length=20, help_text='Enter field documentation')
-    email = models.CharField(max_length=40, help_text='Enter field documentation')
-    address = models.CharField(max_length=120, help_text='Enter field documentation')
-
-    # Methods
-    def get_absolute_url(self):
-        return reverse('user-detail', args=[str(self.id)])
-
-    def __str__(self):
-        return self.name
+# class User(models.Model):
+#     # Fields
+#     name = models.CharField(max_length=60, help_text='Enter field documentation')
+#     phone = models.CharField(max_length=20, help_text='Enter field documentation')
+#     email = models.CharField(max_length=40, help_text='Enter field documentation')
+#     address = models.CharField(max_length=120, help_text='Enter field documentation')
+#
+#     # Methods
+#     def get_absolute_url(self):
+#         return reverse('user-detail', args=[str(self.id)])
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Headquarter(models.Model):
