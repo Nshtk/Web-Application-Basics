@@ -44,7 +44,6 @@ class ItemCreate(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs = super(ItemCreate, self).get_context_data(**kwargs)
-        # Your code here
         kwargs['foo'] = "bar"
         return kwargs
 
@@ -55,5 +54,5 @@ class ItemCreate(TemplateView):
                 product = models.Product.objects.create(name="Giga bed", description="That's a bed", manufacturer=models.Manufacturer.objects.get(name="Orange brothers factory"), price=500,
                                                              image=None)
                 product.furniture_type.set(models.FurnitureType.objects.filter(name="Chair"))
-                return JsonResponse(serializers.serialize('json', [product,]), safe=False)
+                return JsonResponse(serializers.serialize(product), safe=False)
 

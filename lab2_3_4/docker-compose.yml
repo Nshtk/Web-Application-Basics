@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./mysite
+    command: python runserver.py
+    volumes:
+      - ./mysite/:/usr/src/mysite/
+
+    env_file:
+      - .env.dev
+    depends_on:
+      - db
+  nginx:
+    build: ./mysite/nginx
+    ports:
+      - 80:8081
+    depends_on:
+      - web
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=4444555556
+      - POSTGRES_DB=furniture
+      - PGDATA=/var/lib/postgresql/data
+volumes:
+  postgres_data:
